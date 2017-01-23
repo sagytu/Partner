@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PartnerMatcherGitHub
+namespace PartnersMatcher
 {
-    //Comment
     [Serializable]
     public class User
     {
@@ -17,8 +16,8 @@ namespace PartnerMatcherGitHub
         string gender;
         public string email { get; set; }
         public string password { get; set; }
-        public string religion { get; set; }
-        public string city { get; set; }
+        public string religion{ get; set; }
+        public string city { get; set; } 
         public string maritalStatus { get; set; }
         public List<string> areas { get; set; }
 

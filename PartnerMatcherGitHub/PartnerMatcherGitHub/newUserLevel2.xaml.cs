@@ -11,23 +11,30 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using partnersMatcherPart4.Controller;
+using partnersMatcherPart4.Model;
 
-namespace PartnerMatcherGitHub
+namespace GUI
 {
     /// <summary>
     /// Interaction logic for newUser.xaml
     /// </summary>
     public partial class newUserLevel2 : Window
     {
-        string email;     
-        Model model;
-        public newUserLevel2(Model model, string email)
+        string email;
+        MyController controller;
+        User user;
+
+        public newUserLevel2(MyController controler, string email, User user)
         {
             InitializeComponent();
-            this.model = model;
+            this.controller = controler;
             this.email = email;
-            this.areas.ItemsSource = model.modelAreas;
-            this.areas.MaxHeight=100;
+            this.areas.ItemsSource = controler.areas;
+            this.areas.MaxHeight = 100;
+            this.user = user;
+            CenterWindowOnScreen();
+
         }
 
         private void ComboBox_Loaded(object sender, RoutedEventArgs e)
@@ -54,24 +61,41 @@ namespace PartnerMatcherGitHub
 
         private void create_Click(object sender, RoutedEventArgs e)
         {
-                string religion = this.religion.Text;
-                string marital = this.marital.Text;
+            string religion = this.religion.Text;
+            string marital = this.marital.Text;
 
 
 
-                    List<string> areas = new List<string>();
-                    foreach (string item in this.areas.SelectedItems)
-                    {
-                        areas.Add(item); 
-                    }
-                    model.emailToUser[email].religion = religion;
-                    model.emailToUser[email].maritalStatus = marital;
-                    model.emailToUser[email].areas = areas;
-                    this.Close();
+            try
+            {
+                List<string> areas = new List<string>();
+                foreach (string item in this.areas.SelectedItems)
+                {
+                    areas.Add(item);
+                }
+                user.religion = religion;
+                user.maritalStatus = marital;
+                user.areas = areas;
+                controller.addNewUser(this.user);
+
+                this.Close();
+            }
+            catch (Exception)
+            {
+
+            }
 
 
         }
 
-
+        private void CenterWindowOnScreen()
+        {
+            double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
+            double screenHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
+            double windowWidth = this.Width;
+            double windowHeight = this.Height;
+            this.Left = (screenWidth / 2) - (windowWidth / 2);
+            this.Top = (screenHeight / 2) - (windowHeight / 2);
+        }
     }
 }

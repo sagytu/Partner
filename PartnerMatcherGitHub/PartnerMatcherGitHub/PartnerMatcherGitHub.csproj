@@ -54,22 +54,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model.cs" />
+    <Compile Include="Controller\MyController.cs" />
+    <Compile Include="Model\MyModel.cs" />
+    <Compile Include="Model\Request.cs" />
+    <Compile Include="newPost.xaml.cs">
+      <DependentUpon>newPost.xaml</DependentUpon>
+    </Compile>
     <Compile Include="newUser.xaml.cs">
       <DependentUpon>newUser.xaml</DependentUpon>
     </Compile>
     <Compile Include="newUserLevel2.xaml.cs">
       <DependentUpon>newUserLevel2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Post.cs" />
+    <Compile Include="Model\Post.cs" />
     <Compile Include="Posts.xaml.cs">
       <DependentUpon>Posts.xaml</DependentUpon>
     </Compile>
     <Compile Include="postToshow.cs" />
+    <Compile Include="requestToshow.cs" />
     <Compile Include="searchWindow.xaml.cs">
       <DependentUpon>searchWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="User.cs" />
+    <Compile Include="showRequests.xaml.cs">
+      <DependentUpon>showRequests.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\User.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -82,6 +91,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="newPost.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="newUser.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -97,6 +110,10 @@
     <Page Include="searchWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="showRequests.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

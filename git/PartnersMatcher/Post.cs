@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PartnerMatcherGitHub
+namespace PartnersMatcher
 {
     [Serializable]
     public class Post
     {
-        //ok
         public int id { get; set; }
         public string title { get; set; }
         public string content { get; set; }
