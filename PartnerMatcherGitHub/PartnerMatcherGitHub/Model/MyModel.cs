@@ -364,6 +364,10 @@ namespace partnersMatcherPart4.Model
             dataset.Close();
             return res;
         }
+        /// <summary>
+        /// Adds a request for a post to the relation 'requests'
+        /// </summary>
+        /// <param name="request">The request to add</param>
         public void SendRequest(Request request)
         {
             string query = "INSERT INTO requests ([sender], [post id], [status], [rank])" + " VALUES (@sender,@postId,@status,@rank)";
@@ -376,6 +380,11 @@ namespace partnersMatcherPart4.Model
             command.ExecuteNonQuery();
             dataset.Close();
         }
+        /// <summary>
+        /// Returns the requests for posts of a user
+        /// </summary>
+        /// <param name="userID">The user</param>
+        /// <returns>Request list of the user</returns>
         public List<Request> GetRequests(string userID)
         {
             //find the publisher
@@ -405,6 +414,13 @@ namespace partnersMatcherPart4.Model
             dataset.Close();
             return res;
         }
+        /// <summary>
+        /// Updates request's status
+        /// </summary>
+        /// <param name="senderID">sender of request</param>
+        /// <param name="postID">post id</param>
+        /// <param name="rank">rank for the request</param>
+        /// <param name="status">the status to update</param>
         public void updateRequestStatusRank(string senderID, int postID, int rank, string status)
         {
             dataset.Open();
