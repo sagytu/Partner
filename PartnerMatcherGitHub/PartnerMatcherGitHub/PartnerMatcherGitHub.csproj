@@ -56,7 +56,9 @@
     </ApplicationDefinition>
     <Compile Include="Controller\MyController.cs" />
     <Compile Include="Model\MyModel.cs" />
+    <Compile Include="Model\Post.cs" />
     <Compile Include="Model\Request.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="newPost.xaml.cs">
       <DependentUpon>newPost.xaml</DependentUpon>
     </Compile>
@@ -66,7 +68,6 @@
     <Compile Include="newUserLevel2.xaml.cs">
       <DependentUpon>newUserLevel2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\Post.cs" />
     <Compile Include="Posts.xaml.cs">
       <DependentUpon>Posts.xaml</DependentUpon>
     </Compile>
@@ -78,7 +79,6 @@
     <Compile Include="showRequests.xaml.cs">
       <DependentUpon>showRequests.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\User.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
