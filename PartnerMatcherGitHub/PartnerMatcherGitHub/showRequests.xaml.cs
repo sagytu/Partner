@@ -29,6 +29,11 @@ namespace GUI
         int rank;
         string status;
 
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="controler">my controller</param>
+        /// <param name="requests">requests list</param>
         public showRequests(MyController controler, List<Request> requests)
         {
             InitializeComponent();
@@ -39,6 +44,9 @@ namespace GUI
 
         }
 
+        /// <summary>
+        /// the function creates the requests list
+        /// </summary>
         public void creatRequestsList()
         {
             System.Windows.Forms.ListView l = new System.Windows.Forms.ListView();
@@ -46,8 +54,6 @@ namespace GUI
             l.Columns.Add("Post id", 100);
             l.Columns.Add("status", 100);
             l.Columns.Add("rank", 100);
-
-
 
             ListView lv = new ListView();
             lv.Width = 300;
@@ -96,6 +102,7 @@ namespace GUI
             Canvas.SetLeft(tb, 150);
             Canvas.SetTop(tb, 275);
 
+            //request status combo box
             ComboBox comboStatus = new ComboBox();
             comboStatus.Width = 100;
             comboStatus.ItemsSource = new List<string>() { "aproved", "denied" };
@@ -106,6 +113,7 @@ namespace GUI
             Canvas.SetLeft(comboStatus, 50);
             Canvas.SetTop(comboStatus, 310);
 
+            //rank combo box
             ComboBox comboRank = new ComboBox();
             comboRank.Width = 100;
             comboRank.ItemsSource = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -129,6 +137,11 @@ namespace GUI
         }
 
 
+        /// <summary>
+        /// the function handles the request status change
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_click(object sender, RoutedEventArgs e)
         {
             if (postID != "" && postID.All(c => Char.IsDigit(c)) && requests.Any(r => r.postID == Convert.ToInt32(postID)))
@@ -150,7 +163,11 @@ namespace GUI
 
         }
 
-
+        /// <summary>
+        /// the function handles the text change in postID field
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void postID_TextChanged(object sender, TextChangedEventArgs e)
         {
             // ... Get control that raised this event.
@@ -160,15 +177,25 @@ namespace GUI
 
         }
 
+        /// <summary>
+        /// the function handles the request status selection
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void status_SelctionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // ... Get control that raised this event.
+            // get control that raised this event.
             var combo = sender as ComboBox;
-            // ... Change Window Title.
+            // change Window Title.
             this.status = combo.SelectedItem.ToString();
 
         }
 
+        /// <summary>
+        /// the function handles the rank selection
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rank_SelctionChanged(object sender, SelectionChangedEventArgs e)
         {
             // ... Get control that raised this event.
@@ -177,6 +204,10 @@ namespace GUI
             this.rank = Convert.ToInt32(combo.SelectedItem);
 
         }
+
+        /// <summary>
+        /// the function centers the window on screen
+        /// </summary>
         private void CenterWindowOnScreen()
         {
             double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;

@@ -25,6 +25,12 @@ namespace GUI
         MyController controller;
         User user;
 
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="controler"></param>
+        /// <param name="email"></param>
+        /// <param name="user"></param>
         public newUserLevel2(MyController controler, string email, User user)
         {
             InitializeComponent();
@@ -37,6 +43,11 @@ namespace GUI
 
         }
 
+        /// <summary>
+        /// handler for combo box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ComboBox_Loaded(object sender, RoutedEventArgs e)
         {
             // ... A List.
@@ -52,6 +63,11 @@ namespace GUI
             comboBox.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// handler for selction changed in the combo box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // ... Get the ComboBox.
@@ -59,6 +75,11 @@ namespace GUI
 
         }
 
+        /// <summary>
+        /// click on create - call the create new user function in the controller
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void create_Click(object sender, RoutedEventArgs e)
         {
             string religion = this.religion.Text;
@@ -88,6 +109,9 @@ namespace GUI
 
         }
 
+        /// <summary>
+        /// center the window
+        /// </summary>
         private void CenterWindowOnScreen()
         {
             double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;

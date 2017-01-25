@@ -22,6 +22,11 @@ namespace GUI
     public partial class searchWindow : Window
     {
         MyController controler;
+
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="controler"></param>
         public searchWindow(MyController controler)
         {
             InitializeComponent();
@@ -32,12 +37,18 @@ namespace GUI
             CenterWindowOnScreen();
         }
 
+        /// <summary>
+        /// the function handles the search button click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Search_Click(object sender, RoutedEventArgs e)
         {
+            //check if all fields are field
             if (this.city.Text == "" || this.areas.Text == "")
                 MessageBox.Show("one or more of the fields is empty", "EROR");
             if (!this.city.Text.All(c => Char.IsLetter(c)))
-                MessageBox.Show("the city is invalid", "EROR");
+                MessageBox.Show("the city is invalid", "ERROR");
             string city = this.city.Text;
             string area = this.areas.Text;
             Dictionary<int, Post> pl = new Dictionary<int, Post>();
@@ -48,6 +59,9 @@ namespace GUI
             postWin.Show();
         }
 
+        /// <summary>
+        /// the function centers the window on screen
+        /// </summary>
         private void CenterWindowOnScreen()
         {
             double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;

@@ -28,6 +28,13 @@ namespace GUI
         string postID;
         string requestContent;
 
+        /// <summary>
+        /// construcor
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="publish"></param>
+        /// <param name="controler"></param>
+        /// <param name="posts"></param>
         public Posts(bool request, bool publish, MyController controler, Dictionary<int, Post> posts)
         {
             InitializeComponent();
@@ -40,6 +47,9 @@ namespace GUI
 
         }
 
+        /// <summary>
+        /// create the posts window - get the posts to show from controller
+        /// </summary>
         public void createListForPosts()
         {
             System.Windows.Forms.ListView l = new System.Windows.Forms.ListView();
@@ -119,8 +129,8 @@ namespace GUI
             this.canvas.Children.Add(tb);
             Canvas.SetLeft(tb, 140);
             Canvas.SetTop(tb, 270);
-            // Button button = new Button();
-            if (request)
+
+            if (request) // case of show posts for request - need to add send request button
             {
                 Button button = new Button();
                 button.Name = "button";
@@ -145,7 +155,7 @@ namespace GUI
 
 
             }
-            if (publish)
+            if (publish) // case of show user's posts - need to add publish / unpublish buttons
             {
                 Button button = new Button();
                 button.Name = "button";
@@ -166,6 +176,11 @@ namespace GUI
             }
         }
 
+        /// <summary>
+        /// click on buttons - 2 cases of buttons: send request and publish
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_click(object sender, RoutedEventArgs e)
         {
             Post outPost;
@@ -173,15 +188,15 @@ namespace GUI
 
             try
             {
-
+                // publish button
                 if (publish && postID != "" && postID.All(c => Char.IsDigit(c) && outPost != null))
                 {
                     controller.publishPost(Convert.ToInt32(postID), true);
                     MessageBox.Show("The Status changed succesfully!", "Partner Matcher");
                 }
+                // send request button
                 if (request && postID != "" && postID.All(c => Char.IsDigit(c) && outPost != null))
                 {
-                    //controller - send request
                     Request requestt = new Request(Convert.ToInt32(postID), controller.currentUserEmail, "not decided", 0);
                     controller.sendRequest(requestt);
                     string content = requestContent;
@@ -196,6 +211,11 @@ namespace GUI
             }
         }
 
+        /// <summary>
+        /// click on unpublish button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_click(object sender, RoutedEventArgs e)
         {
             try
@@ -212,6 +232,11 @@ namespace GUI
             }
         }
 
+        /// <summary>
+        /// handler for postID textbox change
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void postID_TextChanged(object sender, TextChangedEventArgs e)
         {
             // ... Get control that raised this event.
@@ -221,6 +246,11 @@ namespace GUI
 
         }
 
+        /// <summary>
+        /// handler for request number textbox change
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void request_TextChanged(object sender, TextChangedEventArgs e)
         {
             // ... Get control that raised this event.
@@ -230,7 +260,9 @@ namespace GUI
 
         }
 
-
+        /// <summary>
+        /// center the window
+        /// </summary>
         private void CenterWindowOnScreen()
         {
             double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;

@@ -25,6 +25,11 @@ namespace GUI
     public partial class MainWindow : Window
     {
         MyController controller;
+
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="controler">my controller</param>
         public MainWindow(MyController controler)
         {
             InitializeComponent();
@@ -32,14 +37,21 @@ namespace GUI
             CenterWindowOnScreen();
             string accessFilePath = System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(Directory.GetCurrentDirectory()));
 
+            //adding the partners matcher logo
             BitmapImage b = new BitmapImage();
             b.BeginInit();
             b.UriSource = new Uri(accessFilePath + "/images/logo.png");
+            //b.UriSource = new Uri(accessFilePath);
             b.EndInit();
             logo.Source = b;
 
         }
 
+        /// <summary>
+        /// the function handles the search button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">search button clicked</param>
         private void click_Search(object sender, RoutedEventArgs e)
         {
             if (controller.currentUserEmail != "")
@@ -52,12 +64,22 @@ namespace GUI
                 MessageBox.Show("you have to login first!", "EROR");
         }
 
+        /// <summary>
+        /// the function handles the new user button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void click_newUser(object sender, RoutedEventArgs e)
         {
             newUser newUser = new newUser(controller);
             newUser.Show();
         }
 
+        /// <summary>
+        /// the function handles the post button click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void click_Post(object sender, RoutedEventArgs e)
         {
             if (controller.currentUserEmail != "")
@@ -71,7 +93,11 @@ namespace GUI
         }
 
 
-
+        /// <summary>
+        /// the function handles the log in button click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Login_Click(object sender, RoutedEventArgs e)
         {
 
@@ -108,6 +134,11 @@ namespace GUI
 
         }
 
+        /// <summary>
+        /// the function handles the show my post button click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void click_MyPosts(object sender, RoutedEventArgs e)
         {
             if (controller.currentUserEmail != "")
@@ -121,6 +152,11 @@ namespace GUI
 
         }
 
+        /// <summary>
+        /// the function handles the show all posts button click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void click_AllPosts(object sender, RoutedEventArgs e)
         {
             if (controller.currentUserEmail != "")
@@ -141,6 +177,11 @@ namespace GUI
 
         }
 
+        /// <summary>
+        /// the function handles the show all requests button click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void click_AllRequests(object sender, RoutedEventArgs e)
         {
             if (controller.currentUserEmail != "")
@@ -156,12 +197,15 @@ namespace GUI
 
                 }
             }
-            else
+            else   //check if the user hasn't logged in before clicking
                 MessageBox.Show("you have to login first!", "EROR");
 
         }
 
 
+        /// <summary>
+        /// the function centers the window on screen
+        /// </summary>
         private void CenterWindowOnScreen()
         {
             double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;

@@ -24,6 +24,11 @@ namespace GUI
         public bool is_male;
         public bool is_female;
         MyController controller;
+
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="controler"></param>
         public newUser(MyController controler)
         {
             InitializeComponent();
@@ -32,6 +37,11 @@ namespace GUI
 
         }
 
+        /// <summary>
+        /// handler for combo box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ComboBox_Loaded(object sender, RoutedEventArgs e)
         {
             // ... A List.
@@ -47,6 +57,11 @@ namespace GUI
             comboBox.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// handler for selction of combo box changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // ... Get the ComboBox.
@@ -54,14 +69,19 @@ namespace GUI
 
         }
 
+        /// <summary>
+        /// go to the next level window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void next_Click(object sender, RoutedEventArgs e)
         {
             if (this.first_name.Text == "" || this.last_name.Text == "" || this.dateOfBirth.Text == "" ||
-                this.email.Text == "" || this.password.Password == "" || this.city.Text == "")
+                this.email.Text == "" || this.password.Password == "" || this.city.Text == "") // fields are empty
 
                 MessageBox.Show("one or more of the fields is empty", "EROR");
 
-            else if (this.password.Password.Length < 8)
+            else if (this.password.Password.Length < 8) // password invalid
                 MessageBox.Show("password should have at least 8 characters", "EROR");
             else
             {
@@ -99,19 +119,31 @@ namespace GUI
 
         }
 
+        /// <summary>
+        /// handler for male checkbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void male_Checked(object sender, RoutedEventArgs e)
         {
             is_male = true;
             is_female = false;
         }
 
+        /// <summary>
+        /// handler for female checkbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void female_Checked(object sender, RoutedEventArgs e)
         {
             is_female = true;
             is_male = false;
         }
 
-
+        /// <summary>
+        /// center the window
+        /// </summary>
         private void CenterWindowOnScreen()
         {
             double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;

@@ -26,6 +26,11 @@ namespace GUI
 
         public bool isPublished;
 
+
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="controler"></param>
         public newPost(MyController controler)
         {
             InitializeComponent();
@@ -35,6 +40,11 @@ namespace GUI
 
         }
 
+        /// <summary>
+        /// click on add new post - call the add post function in the controller
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void add_Click(object sender, RoutedEventArgs e)
         {
             string title = this.title.Text;
@@ -48,7 +58,7 @@ namespace GUI
                 areas.Add(item.ToString());
 
             }
-            if (newArea != "")
+            if (newArea != "") // new area was added
                 areas.Add(newArea);
 
             try
@@ -67,11 +77,21 @@ namespace GUI
         }
 
 
+        /// <summary>
+        /// handler for check yes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void yes_Checked(object sender, RoutedEventArgs e)
         {
             isPublished = true;
         }
 
+        /// <summary>
+        /// handler foe check no
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void no_Checked(object sender, RoutedEventArgs e)
         {
             isPublished = false;
@@ -79,6 +99,9 @@ namespace GUI
         }
 
 
+        /// <summary>
+        /// center the window
+        /// </summary>
         private void CenterWindowOnScreen()
         {
             double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
