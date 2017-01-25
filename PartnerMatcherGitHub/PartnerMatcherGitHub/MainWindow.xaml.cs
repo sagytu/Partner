@@ -35,6 +35,7 @@ namespace GUI
             BitmapImage b = new BitmapImage();
             b.BeginInit();
             b.UriSource = new Uri(accessFilePath + "/images/logo.png");
+            b.UriSource = new Uri(accessFilePath);
             b.EndInit();
             logo.Source = b;
 
