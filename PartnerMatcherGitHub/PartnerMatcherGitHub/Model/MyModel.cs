@@ -26,7 +26,7 @@ namespace partnersMatcherPart4.Model
         {
             //connect to dataset
             string accessFilePath = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory()));
-            string folderBinPath = @"\DB\partnersMatcherDB.accdb";
+            string folderBinPath = @"\partnersMatcherDB.accdb";
             string fullPath = accessFilePath + folderBinPath;
             //string fullPath = @"C:\Users\lior\Documents\visual studio 2015\Projects\partnersMatcherPart4\partnersMatcherPart4\DB";
             dataset = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + fullPath + "; Persist Security Info=False");
